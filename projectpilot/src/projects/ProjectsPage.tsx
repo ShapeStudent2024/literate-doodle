@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { projectAPI } from './projectAPI';
 import ProjectList from './ProjectList';
 import { Project } from './Project';
@@ -12,19 +12,19 @@ function ProjectsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const saveProject = (project: Project) => {
     console.log('Saving project: ', project);
-    projectAPI
-      .put(project)
-      .then((updatedProject) => {
-        let updatedProjects = projects.map((p: Project) => {
-          return p.id === project.id ? new Project(updatedProject) : p;
-        });
-        setProjects(updatedProjects);
-      })
-      .catch((e) => {
-        if (e instanceof Error) {
-          setError(e.message);
-        }
-      });
+       projectAPI
+         .put(project)
+         .then((updatedProject) => {
+           let updatedProjects = projects.map((p: Project) => {
+             return p.id === project.id ? new Project(updatedProject) : p;
+           });
+           setProjects(updatedProjects);
+         })
+         .catch((e) => {
+            if (e instanceof Error) {
+             setError(e.message);
+            }
+         });
   };
   const handleMoreClick = () => {
     setCurrentPage((currentPage) => currentPage + 1);

@@ -9,7 +9,7 @@ npm run dev
 npm install mini.css@3.0.1
 
 
-
+serve -s dist
 
 
 
